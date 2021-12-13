@@ -112,3 +112,9 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,windows
+
+# コンパイルファイルをあげないようにします〜
+# 間違えて上げてしまってすみません、なんでもしますから！！
+*
+!*/
+!*.*
