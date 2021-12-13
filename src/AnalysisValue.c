@@ -1,5 +1,6 @@
 ﻿#include <stdio.h>
 #include <time.h>
+#include "commandLs.c"
 
 // これがmainになるのか知らんけどとりあえず
 int main ()
@@ -9,6 +10,13 @@ int main ()
 	char fname[] = "test.txt";
 	int chr;
     double cpuTime;
+    int lsNum = 100;
+    char testString[] = {'a','b'};
+
+    // commandLs.cのメソッドを呼び出ししているよ〜
+    commandLs(lsNum, &testString);
+
+    printf("commandLsメソッドの呼び出し時間：%f\n", cpuTime);
  
 	fp = fopen(fname, "r"); // ファイルを開く。失敗するとNULLを返す。
 	if(fp == NULL) {
@@ -16,6 +24,7 @@ int main ()
 		return -1;
 	}
  
+    printf("テキストファイルの内容：");
 	while((chr = fgetc(fp)) != EOF) {
 		putchar(chr);
 	}
