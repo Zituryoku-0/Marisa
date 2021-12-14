@@ -8,9 +8,9 @@ int main ()
     /* 定数一覧（Linuxのコマンド） 
     　　とりあえずこのくらい　　　 */
     char commandLs[] = {"ls"}; // listコマンド
-    const char cd[] = {'c','d'}; // change directoryコマンド
-    const char mv[] = {'m','v'}; // moveコマンド
-    const char cp[] = {'c','p'}; // copyコマンド
+    const char commandCd[] = {"cd"}; // change directoryコマンド
+    const char commandMv[] = {"mv"}; // moveコマンド
+    const char commandCp[] = {"cp"}; // copyコマンド
 
     enum command
     {
@@ -25,6 +25,7 @@ int main ()
 	int chr;
     double cpuTime;
 
+    // コマンドのパターン（色々と追加していくよ〜）
     switch (com)
     {
     case(ls):
@@ -35,6 +36,6 @@ int main ()
     default:
         break;
     }
-    
+
 	return 0;
 }
