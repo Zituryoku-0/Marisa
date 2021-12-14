@@ -1,38 +1,40 @@
 ﻿#include <stdio.h>
 #include <time.h>
-#include "commandLs.c"
+#include "arbitaryCommand.c"
 
 // これがmainになるのか知らんけどとりあえず
 int main ()
 {
+    /* 定数一覧（Linuxのコマンド） 
+    　　とりあえずこのくらい　　　 */
+    char commandLs[] = {"ls"}; // listコマンド
+    const char cd[] = {'c','d'}; // change directoryコマンド
+    const char mv[] = {'m','v'}; // moveコマンド
+    const char cp[] = {'c','p'}; // copyコマンド
+
+    enum command
+    {
+        ls,
+    };
+
+    enum command com;
+
     FILE *fp; // FILE型構造体
     // 目的ないから、ファイル名指定してるよ〜
 	char fname[] = "test.txt";
 	int chr;
     double cpuTime;
-    int lsNum = 100;
-    char testString[] = {'a','b'};
 
-    // commandLs.cのメソッドを呼び出ししているよ〜
-    commandLs(lsNum, &testString);
-
-    printf("commandLsメソッドの呼び出し時間：%f\n", cpuTime);
- 
-	fp = fopen(fname, "r"); // ファイルを開く。失敗するとNULLを返す。
-	if(fp == NULL) {
-		printf("%s file not open!\n", fname);
-		return -1;
-	}
- 
-    printf("テキストファイルの内容：");
-	while((chr = fgetc(fp)) != EOF) {
-		putchar(chr);
-	}
- 
-    cpuTime = (double)clock();
-    printf("テキストのアドレス：%d\n", chr);
-    printf("CPU時間：%f\n", cpuTime);
-	fclose(fp); // ファイルを閉じる
- 
+    switch (com)
+    {
+    case(ls):
+        // arbitaryCommand.cのメソッドを呼び出ししているよ〜
+        printf("lsの呼び出し時間：%f\n", arbitaryCommand(&commandLs[0]));
+        break;
+    
+    default:
+        break;
+    }
+    
 	return 0;
 }
