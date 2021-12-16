@@ -1,5 +1,6 @@
 ﻿#include <stdio.h>
 #include <time.h>
+#include <sys/time.h>
 
 double timeStart = 0;
 double *timerStart = &timeStart;
@@ -9,14 +10,14 @@ double *timerEnd = &timeEnd;
 // タイマー開始時の時刻を記録 
 void countStart() 
 {
-    timeStart = clock();
+    timeStart = time(NULL);
     printf("timeStartの時間：%f\n", timeStart);
 }
 
 // タイマー終了時の時刻を記録
 void countEnd()
 {
-    timeEnd = clock();
+    timeEnd = time(NULL);
     printf("timeEndの時間：%f\n", timeEnd);
 }
 
