@@ -1,29 +1,41 @@
 ﻿#include <stdio.h>
 #include <time.h>
+#include "arbitaryCommand.c"
 
 // これがmainになるのか知らんけどとりあえず
 int main ()
 {
+    /* 定数一覧（Linuxのコマンド） 
+    　　とりあえずこのくらい　　　 */
+    char commandLs[] = {"ls"}; // listコマンド
+    char commandCd[] = {"cd"}; // change directoryコマンド
+    char commandMv[] = {"mv"}; // moveコマンド
+    char commandCp[] = {"cp"}; // copyコマンド
+
+    enum command
+    {
+        ls,
+    };
+
+    enum command com;
+
     FILE *fp; // FILE型構造体
     // 目的ないから、ファイル名指定してるよ〜
 	char fname[] = "test.txt";
 	int chr;
     double cpuTime;
- 
-	fp = fopen(fname, "r"); // ファイルを開く。失敗するとNULLを返す。
-	if(fp == NULL) {
-		printf("%s file not open!\n", fname);
-		return -1;
-	}
- 
-	while((chr = fgetc(fp)) != EOF) {
-		putchar(chr);
-	}
- 
-    cpuTime = (double)clock();
-    printf("テキストのアドレス：%d\n", chr);
-    printf("CPU時間：%f\n", cpuTime);
-	fclose(fp); // ファイルを閉じる
- 
+
+    // コマンドのパターン（色々と追加していくよ〜）
+    switch (com)
+    {
+    case(ls):
+        // arbitaryCommand.cのメソッドを呼び出ししているよ〜
+        printf("lsの呼び出し時間：%f\n", arbitaryCommand(&commandLs[0]));
+        break;
+    
+    default:
+        break;
+    }
+
 	return 0;
 }
