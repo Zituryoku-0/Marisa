@@ -8,9 +8,9 @@ int main ()
     /* 定数一覧（Linuxのコマンド） 
     　　とりあえずこのくらい　　　 */
     char commandLs[] = {"ls"}; // listコマンド
-    const char commandCd[] = {"cd"}; // change directoryコマンド
-    const char commandMv[] = {"mv"}; // moveコマンド
-    const char commandCp[] = {"cp"}; // copyコマンド
+    char commandCd[] = {"cd"}; // change directoryコマンド
+    char commandMv[] = {"mv"}; // moveコマンド
+    char commandCp[] = {"cp"}; // copyコマンド
 
     enum command
     {
