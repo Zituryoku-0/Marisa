@@ -1,5 +1,6 @@
 ﻿#include <stdio.h>
 #include <stdlib.h>
+#include <sys/time.h>
 #include "timerCounter.c"
 #include "execCommand/commandLs.c"
 #define BUF 256
@@ -9,7 +10,10 @@
 // もしこれよりも効率の良いものがあれば、それにするよ〜
 double arbitaryCommand (char *testMessage)
 {
-    double cpuTime;
+    time_t cpuTime = 0;
+    time_t startTime = 0;
+    double endTime = 0;
+
     FILE *fp;
     char *cmdline = testMessage;
     if ((fp=popen(cmdline, "r")) == NULL) {
@@ -18,7 +22,8 @@ double arbitaryCommand (char *testMessage)
     }
 
     // 計測開始
-    countStart();
+    time_t start = countStart();
+    printf("startTimeの時間：%ld\n", start);
     commandLs(fp, BUF);
     /*char buf[BUF];
     while(fgets(buf, sizeof(buf), fp) != NULL) {
@@ -26,9 +31,10 @@ double arbitaryCommand (char *testMessage)
     }*/
 
     // 計測終了
-    countEnd();
+    time_t end = countEnd();
+    printf("endTimeの時間：%ld\n", end);
 
     // pclose(fp);
 
-    return lapTime();
+    return lapTime(&start, &end);
 }
