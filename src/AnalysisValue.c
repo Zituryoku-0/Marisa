@@ -18,6 +18,7 @@ int main ()
     };
 
     enum command com;
+    com = ls;
 
     FILE *fp; // FILE型構造体
     // 目的ないから、ファイル名指定してるよ〜

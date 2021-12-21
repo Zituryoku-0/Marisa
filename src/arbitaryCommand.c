@@ -1,6 +1,7 @@
 ﻿#include <stdio.h>
 #include <stdlib.h>
 #include "timerCounter.c"
+#include "ExecCommand/commandLs.c"
 #define BUF 256
 
 // これはネットで調べたものをまるパクリしたよ〜
@@ -19,9 +20,10 @@ double arbitaryCommand (char *testMessage)
     // 計測開始
     countStart();
     char buf[BUF];
-    while(fgets(buf, sizeof(buf), fp) != NULL) {
+    commandLs(fp, BUF);
+    /*while(fgets(buf, sizeof(buf), fp) != NULL) {
         printf("=> %s", buf);
-    }
+    }*/
 
     // 計測終了
     countEnd();
