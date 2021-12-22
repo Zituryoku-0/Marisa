@@ -6,8 +6,8 @@ double *timerStart = &timeStart;
 double timeEnd = 0;
 double *timerEnd = &timeEnd;
 
-// タイマー開始時の時刻を記録 
-void countStart() 
+// タイマー開始時の時刻を記録
+void countStart()
 {
     timeStart = clock();
     printf("timeStartの時間：%f\n", timeStart);
